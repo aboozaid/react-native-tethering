@@ -7,14 +7,17 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule
 import com.facebook.react.bridge.ReactMethod
 import com.facebook.react.bridge.Promise
 import com.tethering.hotspot.HotspotManager
+import com.tethering.wifi.WifiManager
 
 class TetheringModule(reactContext: ReactApplicationContext) :
   ReactContextBaseJavaModule(reactContext) {
 
   private var hotspotManager: HotspotManager
+  private var wifiManager: WifiManager
 
   init {
     hotspotManager = HotspotManager(reactContext)
+    wifiManager = WifiManager(reactContext)
   }
 
   @ReactMethod
@@ -47,6 +50,16 @@ class TetheringModule(reactContext: ReactApplicationContext) :
   @ReactMethod
   fun getHotspotPeersAddresses(promise: Promise) {
     hotspotManager.getPeersAddresses(promise)
+  }
+
+  @ReactMethod
+  fun isWifiEnabled(promise: Promise) {
+    wifiManager.isEnabled(promise)
+  }
+
+  @ReactMethod
+  fun setWifiEnabled(state:Boolean, promise: Promise) {
+    wifiManager.setEnabled(state, promise)
   }
 
   override fun getName(): String {

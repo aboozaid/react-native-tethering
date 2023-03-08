@@ -112,20 +112,47 @@ export default function App() {
       >
         <Text>Get peers IP</Text>
       </Pressable>
-      {/* <Pressable
+      <Pressable
         style={styles.button}
         android_ripple={{ color: '#fff' }}
         onPress={async () => {
           try {
-            const state = await WifiManager.setEnabled(true);
+            const state = await TetheringManager.isWifiEnabled();
             console.log(state);
           } catch (error) {
             console.log(error);
           }
         }}
       >
-        <Text>Enable/Disable Wifi</Text>
-      </Pressable> */}
+        <Text>Check wifi state</Text>
+      </Pressable>
+      <Pressable
+        style={styles.button}
+        android_ripple={{ color: '#fff' }}
+        onPress={async () => {
+          try {
+            await TetheringManager.setWifiEnabled(true);
+            console.log('wifi enabled');
+          } catch (error) {
+            console.log(error);
+          }
+        }}
+      >
+        <Text>Enable Wifi</Text>
+      </Pressable>
+      <Pressable
+        style={styles.button}
+        android_ripple={{ color: '#fff' }}
+        onPress={async () => {
+          try {
+            await TetheringManager.setWifiEnabled(false);
+          } catch (error) {
+            console.log(error);
+          }
+        }}
+      >
+        <Text>Disable Wifi</Text>
+      </Pressable>
     </View>
   );
 }

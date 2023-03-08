@@ -44,6 +44,14 @@ async function getHotspotPeersAddresses(): Promise<Peer[]> {
   return await _callPromise(Tethering.getHotspotPeersAddresses());
 }
 
+async function isWifiEnabled(): Promise<boolean> {
+  return await _callPromise(Tethering.isWifiEnabled());
+}
+
+async function setWifiEnabled(state?: boolean): Promise<void> {
+  return await _callPromise(Tethering.setWifiEnabled(state || true)); // in android 29 this will trigger bottom sheet panel
+}
+
 export default {
   isHotspotEnabled,
   setHotspotEnabled,
@@ -51,6 +59,9 @@ export default {
   setLocalHotspotDisabled,
   getHotspotDeviceIp,
   getHotspotPeersAddresses,
+
+  isWifiEnabled,
+  setWifiEnabled,
 };
 
 export { TetheringError };

@@ -74,14 +74,14 @@ class HotspotManager(private val context: ReactApplicationContext) {
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
         enableLocalHotspot(promise)
       } else {
-        CustomPromise(promise).reject(UnsupportedApiException(null))
+        CustomPromise(promise).reject(UnsupportedApiException())
       }
     }
   }
 
   fun getMyCurrentAddress(promise: Promise) {
     if (!isHotspotRunning()) {
-      return CustomPromise(promise).reject(CodedException(HotspotDisabledException(null)))
+      return CustomPromise(promise).reject(CodedException(HotspotDisabledException()))
     } else {
       val ipAddress = getHotspotIpAddress()
       promise.resolve(ipAddress)
@@ -90,7 +90,7 @@ class HotspotManager(private val context: ReactApplicationContext) {
 
   fun getPeersAddresses(promise: Promise) {
     if (!isHotspotRunning()) {
-      return CustomPromise(promise).reject(CodedException(HotspotDisabledException(null)))
+      return CustomPromise(promise).reject(CodedException(HotspotDisabledException()))
     } else {
       // In android 13 and above this will return an empty array
       val arpTableString = ArpNDK.getARP().trimIndent()

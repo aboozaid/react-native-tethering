@@ -2,6 +2,10 @@
   xmlns:tools="http://schemas.android.com/tools"
   package="com.tethering">
 
+  <!-- For wifi to check state and change it -->
+  <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+  <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+
   <!-- For local hotspot -->
   <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
   <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />

@@ -1,8 +1,9 @@
 package com.tethering.utils
 
 internal class NoPermissionException(cause: SecurityException?) : CodedException(cause!!)
-internal class UnsupportedApiException(cause: SecurityException?) : CodedException("Only android oreo and above are supported", cause)
-internal class HotspotDisabledException(cause: SecurityException?) : CodedException("Hotspot must be running before calling this function", cause)
+internal class UnsupportedApiException(cause: SecurityException? = null) : CodedException("Only android oreo and above are supported", cause)
+internal class HotspotDisabledException(cause: SecurityException? = null) : CodedException("Hotspot must be running before calling this function", cause)
+internal class WifiEnabledFailedException(cause: SecurityException? = null) : CodedException("Unable to toggle wifi state", cause)
 
 
 enum class TetheringErrorCode(val code: Int, val message: String) {
