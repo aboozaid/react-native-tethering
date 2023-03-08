@@ -1,4 +1,7 @@
 import { NativeModules, Platform } from 'react-native';
+import type { Network, Peer } from './types';
+import { TetheringError } from './utils/TetheringError';
+import _callPromise from './utils/callPromise';
 
 const LINKING_ERROR =
   `The package 'react-native-tethering' doesn't seem to be linked. Make sure: \n\n` +
@@ -17,6 +20,37 @@ const Tethering = NativeModules.Tethering
       }
     );
 
-export function multiply(a: number, b: number): Promise<number> {
-  return Tethering.multiply(a, b);
+async function isHotspotEnabled(): Promise<boolean> {
+  return await _callPromise(Tethering.isHotspotEnabled());
 }
+
+async function setHotspotEnabled(state: boolean): Promise<void> {
+  return await _callPromise(Tethering.setHotspotEnabled(state));
+}
+
+async function setLocalHotspotEnabled(): Promise<Network> {
+  return await _callPromise(Tethering.setLocalHotspotEnabled());
+}
+
+async function setLocalHotspotDisabled(): Promise<void> {
+  return await _callPromise(Tethering.setLocalHotspotDisabled());
+}
+
+async function getHotspotDeviceIp(): Promise<string> {
+  return await _callPromise(Tethering.getHotspotDeviceIp());
+}
+
+async function getHotspotPeersAddresses(): Promise<Peer[]> {
+  return await _callPromise(Tethering.getHotspotPeersAddresses());
+}
+
+export default {
+  isHotspotEnabled,
+  setHotspotEnabled,
+  setLocalHotspotEnabled,
+  setLocalHotspotDisabled,
+  getHotspotDeviceIp,
+  getHotspotPeersAddresses,
+};
+
+export { TetheringError };

@@ -74,6 +74,10 @@ dependencies {
   //noinspection GradleDynamicVersion
   implementation "com.facebook.react:react-native:+"
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+  implementation 'org.lsposed.hiddenapibypass:hiddenapibypass:4.3'
+  implementation 'com.linkedin.dexmaker:dexmaker:2.28.1'
+  implementation 'com.github.fulvius31:ip-neigh-sdk30:v0.0.3alpha'
 }
 
 if (isNewArchitectureEnabled()) {
