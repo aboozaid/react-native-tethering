@@ -1,10 +1,22 @@
 package com.tethering.utils
 
 internal class NoPermissionException(cause: SecurityException?) : CodedException(cause!!)
-internal class UnsupportedApiException(cause: SecurityException? = null) : CodedException("Only android oreo and above are supported", cause)
+internal class UnsupportedApiException(cause: SecurityException? = null) : CodedException("Only android Q and above are supported", cause)
 internal class HotspotDisabledException(cause: SecurityException? = null) : CodedException("Hotspot must be running before calling this function", cause)
 internal class WifiEnabledFailedException(cause: SecurityException? = null) : CodedException("Unable to toggle wifi state", cause)
+internal class AddNetworkException(cause: SecurityException? = null) : CodedException("Unable to add wifi network", cause)
 
+internal class AddNetworkCanceledException(cause: SecurityException? = null) : CodedException("User has canceled the request", cause)
+
+internal class NetworkNotFoundException(cause: SecurityException? = null) : CodedException("Network cannot be found within wifi range", cause)
+
+internal class NetworkScanTimeoutException(cause: SecurityException? = null) : CodedException("Network scan timeout", cause)
+
+internal class NetworkSavedException(cause: SecurityException? = null) : CodedException("Network already saved in user's saved networks", cause)
+internal class WifiConnectionFailedException(cause: SecurityException? = null) : CodedException("Unable connecting to the network", cause)
+internal class WifiConnectionTimeoutException(cause: SecurityException? = null) : CodedException("Connection timeout", cause)
+
+internal class WifiScanFailedException(cause: SecurityException? = null) : CodedException("Unable to start scanning wifi networks", cause)
 
 enum class TetheringErrorCode(val code: Int, val message: String) {
   NO_ERROR(0, "No error"),

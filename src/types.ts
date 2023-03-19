@@ -6,3 +6,12 @@ export type Network = {
 export type Peer = {
   ipAddress: string;
 };
+
+export type WifiNetwork = {
+  ssid: string;
+  bssid: string;
+  capabilities: string;
+  frequency: number;
+  level: number;
+  timestamp: number;
+};

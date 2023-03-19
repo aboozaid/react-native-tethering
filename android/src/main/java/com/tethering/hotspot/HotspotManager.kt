@@ -95,7 +95,7 @@ class HotspotManager(private val context: ReactApplicationContext) {
       // In android 13 and above this will return an empty array
       val arpTableString = ArpNDK.getARP().trimIndent()
       val pattern =
-        """^(\S+)\s+dev\s+(swlan0|ap0|wlan0)\s+lladdr\s+([0-9a-fA-F]{2}(?::[0-9a-fA-F]{2}){5})\s+(\S+)${'$'}""".toRegex(RegexOption.MULTILINE)
+        """^(\S+)\s+dev\s+(swlan0|ap0|wlan1)\s+lladdr\s+([0-9a-fA-F]{2}(?::[0-9a-fA-F]{2}){5})\s+(\S+)${'$'}""".toRegex(RegexOption.MULTILINE)
       val peers = Arguments.createArray()
       for (matchResult in pattern.findAll(arpTableString)) {
         val ipAddress = matchResult.groupValues[1]
@@ -274,7 +274,7 @@ class HotspotManager(private val context: ReactApplicationContext) {
     val interfaces = NetworkInterface.getNetworkInterfaces()
     while (interfaces.hasMoreElements()) {
       val ntw = interfaces.nextElement()
-      if (listOf("swlan0", "ap0", "wlan0").any { it == ntw.displayName }) {
+      if (listOf("swlan0", "ap0", "wlan1").any { it == ntw.displayName }) {
         val addresses = ntw.inetAddresses
         while (addresses.hasMoreElements()) {
           val address = addresses.nextElement()

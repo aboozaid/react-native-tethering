@@ -1,19 +1,29 @@
 import * as React from 'react';
 
-import { StyleSheet, View, Text, Pressable } from 'react-native';
-import TetheringManager, { TetheringError } from 'react-native-tethering';
+import {
+  StyleSheet,
+  View,
+  Text,
+  Pressable,
+  ToastAndroid,
+  ScrollView,
+} from 'react-native';
+import TetheringManager from 'react-native-tethering';
 // import WifiManager from 'react-native-wifi-reborn';
+import { useNetInfo } from '@react-native-community/netinfo';
+import type { WifiNetwork } from 'src/types';
 
 export default function App() {
-  // const [result, setResult] = React.useState<number | undefined>();
+  const [networks, setNetworks] = React.useState<WifiNetwork[]>([]);
 
   // React.useEffect(() => {
   //   multiply(3, 7).then(setResult);
   // }, []);
 
+  const netInfo = useNetInfo();
   return (
-    <View style={styles.container}>
-      <Pressable
+    <ScrollView>
+      {/* <Pressable
         style={styles.button}
         android_ripple={{ color: '#fff' }}
         onPress={async () => {
@@ -111,7 +121,7 @@ export default function App() {
         }}
       >
         <Text>Get peers IP</Text>
-      </Pressable>
+      </Pressable> */}
       <Pressable
         style={styles.button}
         android_ripple={{ color: '#fff' }}
@@ -131,7 +141,7 @@ export default function App() {
         android_ripple={{ color: '#fff' }}
         onPress={async () => {
           try {
-            await TetheringManager.setWifiEnabled(true);
+            await TetheringManager.setWifiEnabled();
             console.log('wifi enabled');
           } catch (error) {
             console.log(error);
@@ -145,7 +155,7 @@ export default function App() {
         android_ripple={{ color: '#fff' }}
         onPress={async () => {
           try {
-            await TetheringManager.setWifiEnabled(false);
+            await TetheringManager.setWifiDisabled();
           } catch (error) {
             console.log(error);
           }
@@ -153,7 +163,96 @@ export default function App() {
       >
         <Text>Disable Wifi</Text>
       </Pressable>
-    </View>
+      <Pressable
+        style={styles.button}
+        android_ripple={{ color: '#fff' }}
+        onPress={async () => {
+          try {
+            await TetheringManager.saveNetworkInDevice(
+              'Assem’s iPhone',
+              'a123456789'
+            );
+            console.log('Network saved');
+          } catch (error) {
+            console.log(error);
+          }
+        }}
+      >
+        <Text>Save network</Text>
+      </Pressable>
+      <Pressable
+        style={styles.button}
+        android_ripple={{ color: '#fff' }}
+        onPress={async () => {
+          try {
+            await TetheringManager.joinWifiNetwork(
+              'Assem’s iPhone',
+              'a123456789'
+            );
+            console.log('connected to network');
+          } catch (error) {
+            console.log(error);
+          }
+        }}
+      >
+        <Text>Connect to wifi</Text>
+      </Pressable>
+      <Pressable
+        style={styles.button}
+        android_ripple={{ color: '#fff' }}
+        onPress={async () => {
+          try {
+            await TetheringManager.unjoinCurrentWifiNetwork();
+          } catch (error) {
+            console.log(error);
+          }
+        }}
+      >
+        <Text>Disconnect from wifi</Text>
+      </Pressable>
+      <Pressable
+        style={styles.button}
+        android_ripple={{ color: '#fff' }}
+        onPress={async () => {
+          try {
+            const wifiNetworks = await TetheringManager.getWifiNetworks(true);
+            setNetworks(wifiNetworks);
+          } catch (error) {
+            console.log(error);
+          }
+        }}
+      >
+        <Text>Get list of networks</Text>
+      </Pressable>
+      <Pressable
+        style={styles.button}
+        android_ripple={{ color: '#fff' }}
+        onPress={async () => {
+          ToastAndroid.show(
+            `${netInfo.isInternetReachable} and ${netInfo.isConnected}`,
+            ToastAndroid.SHORT
+          );
+        }}
+      >
+        <Text>Is App has internet</Text>
+      </Pressable>
+
+      <View style={{ marginVertical: 15 }}>
+        {networks.map((n, i) => (
+          <View
+            style={{ padding: 12, backgroundColor: '#222', marginVertical: 6 }}
+            key={i}
+          >
+            <Text>SSID: {n.ssid}</Text>
+            <Text>BSSID: {n.bssid}</Text>
+            <Text>capabilities: {n.capabilities}</Text>
+            <Text>frequency: {n.frequency}</Text>
+            <Text>level: {n.level}</Text>
+            <Text>timestamp: {n.timestamp}</Text>
+          </View>
+        ))}
+      </View>
+    </ScrollView>
   );
 }
 
