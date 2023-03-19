@@ -16,9 +16,13 @@ import type { WifiNetwork } from 'src/types';
 export default function App() {
   const [networks, setNetworks] = React.useState<WifiNetwork[]>([]);
 
-  // React.useEffect(() => {
-  //   multiply(3, 7).then(setResult);
-  // }, []);
+  React.useEffect(() => {
+    const subscriber = TetheringManager.onNetworkDisconnected(() => {
+      console.log('network disconnected');
+    });
+
+    return () => subscriber();
+  }, []);
 
   const netInfo = useNetInfo();
   return (
@@ -185,7 +189,7 @@ export default function App() {
         android_ripple={{ color: '#fff' }}
         onPress={async () => {
           try {
-            await TetheringManager.joinWifiNetwork(
+            await TetheringManager.connectToNetwork(
               'Assem’s iPhone',
               'a123456789'
             );
@@ -202,7 +206,7 @@ export default function App() {
         android_ripple={{ color: '#fff' }}
         onPress={async () => {
           try {
-            await TetheringManager.unjoinCurrentWifiNetwork();
+            await TetheringManager.disconnectFromNetwork();
           } catch (error) {
             console.log(error);
           }

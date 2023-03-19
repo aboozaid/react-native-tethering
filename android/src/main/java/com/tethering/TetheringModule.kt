@@ -77,13 +77,12 @@ class TetheringModule(reactContext: ReactApplicationContext) :
   }*/
 
   @ReactMethod
-  fun joinWifiLocalNetwork(ssid: String, password: String?, isHidden: Boolean, promise: Promise) {
+  fun connectToLocalNetwork(ssid: String, password: String?, isHidden: Boolean, promise: Promise) {
     wifiManager.connectToLocalNetwork(ssid, password, isHidden, promise)
   }
 
-  @RequiresApi(Build.VERSION_CODES.R)
   @ReactMethod
-  fun joinWifiNetwork(ssid: String, password: String?, isHidden: Boolean, timeout: Int, promise: Promise) {
+  fun connectToNetwork(ssid: String, password: String?, isHidden: Boolean, timeout: Int, promise: Promise) {
     wifiManager.connectToNetwork(ssid, password, isHidden, timeout, promise)
   }
 
@@ -92,12 +91,12 @@ class TetheringModule(reactContext: ReactApplicationContext) :
     wifiManager.saveNetworkInDevice(ssid, password, isHidden, promise)
   }
   @ReactMethod
-  fun unjoinCurrentWifiLocalNetwork(promise: Promise) {
+  fun disconnectFromLocalNetwork(promise: Promise) {
     wifiManager.disconnectFromLocalNetwork(promise)
   }
 
   @ReactMethod
-  fun unjoinCurrentWifiNetwork(promise: Promise) {
+  fun disconnectFromNetwork(promise: Promise) {
     wifiManager.disconnectFromNetwork(promise)
   }
 

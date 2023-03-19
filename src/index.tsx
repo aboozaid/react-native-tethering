@@ -1,4 +1,4 @@
-import { NativeModules, Platform } from 'react-native';
+import { NativeModules, Platform, NativeEventEmitter } from 'react-native';
 import type { Network, Peer, WifiNetwork } from './types';
 import { TetheringError } from './utils/TetheringError';
 import _callPromise from './utils/callPromise';
@@ -56,33 +56,33 @@ async function setWifiDisabled(): Promise<void> {
   return await _callPromise(Tethering.setWifiEnabled(false, false)); // in android 29 this will trigger bottom sheet panel
 }
 
-async function joinWifiLocalNetwork(
+async function connectToLocalNetwork(
   ssid: string,
   password?: string,
   isHidden: boolean = false
 ): Promise<void> {
   return await _callPromise(
-    Tethering.joinWifiLocalNetwork(ssid, password, isHidden)
+    Tethering.connectToLocalNetwork(ssid, password, isHidden)
   );
 }
 
-async function joinWifiNetwork(
+async function connectToNetwork(
   ssid: string,
   password?: string,
   isHidden: boolean = false,
   timeout: number = 6000
 ): Promise<void> {
   return await _callPromise(
-    Tethering.joinWifiNetwork(ssid, password, isHidden, timeout)
+    Tethering.connectToNetwork(ssid, password, isHidden, timeout)
   );
 }
 
-async function unjoinCurrentWifiLocalNetwork(): Promise<void> {
-  return await _callPromise(Tethering.unjoinCurrentWifiLocalNetwork());
+async function disconnectFromLocalNetwork(): Promise<void> {
+  return await _callPromise(Tethering.disconnectFromLocalNetwork());
 }
 
-async function unjoinCurrentWifiNetwork(): Promise<void> {
-  return await _callPromise(Tethering.unjoinCurrentWifiNetwork());
+async function disconnectFromNetwork(): Promise<void> {
+  return await _callPromise(Tethering.disconnectFromNetwork());
 }
 
 async function saveNetworkInDevice(
@@ -101,6 +101,13 @@ async function getWifiNetworks(
   return await _callPromise(Tethering.getWifiNetworks(rescan));
 }
 
+function onNetworkDisconnected(callback: () => void) {
+  const emitter = new NativeEventEmitter(Tethering);
+  const listener = emitter.addListener('OnNetworkDisconnected', callback);
+
+  return () => listener.remove();
+}
+
 export default {
   isHotspotEnabled,
   setHotspotEnabled,
@@ -112,12 +119,13 @@ export default {
   isWifiEnabled,
   setWifiEnabled,
   setWifiDisabled,
-  joinWifiLocalNetwork,
-  unjoinCurrentWifiLocalNetwork,
-  joinWifiNetwork,
-  unjoinCurrentWifiNetwork,
+  connectToLocalNetwork,
+  disconnectFromLocalNetwork,
+  connectToNetwork,
+  disconnectFromNetwork,
   saveNetworkInDevice,
   getWifiNetworks,
+  onNetworkDisconnected,
 };
 
 export { TetheringError };
