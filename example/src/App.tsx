@@ -8,20 +8,19 @@ import {
   ToastAndroid,
   ScrollView,
 } from 'react-native';
-import TetheringManager from 'react-native-tethering';
+import TetheringManager, { Network, Event, TetheringError } from '@react-native-tethering/wifi';
 // import WifiManager from 'react-native-wifi-reborn';
 import { useNetInfo } from '@react-native-community/netinfo';
-import type { WifiNetwork } from 'src/types';
 
 export default function App() {
-  const [networks, setNetworks] = React.useState<WifiNetwork[]>([]);
+  const [networks, setNetworks] = React.useState<Network[]>([]);
 
   React.useEffect(() => {
-    const subscriber = TetheringManager.onNetworkDisconnected(() => {
-      console.log('network disconnected');
-    });
+    const subscriber = TetheringManager.addEventListener(Event.OnNetworkDisconnected, () => {
 
-    return () => subscriber();
+    })
+
+    return () => subscriber.remove();
   }, []);
 
   const netInfo = useNetInfo();
@@ -172,10 +171,10 @@ export default function App() {
         android_ripple={{ color: '#fff' }}
         onPress={async () => {
           try {
-            await TetheringManager.saveNetworkInDevice(
-              'Assem’s iPhone',
-              'a123456789'
-            );
+            await TetheringManager.saveNetworkInDevice({
+              ssid: 'Assem’s iPhone',
+              password: 'a123456789'
+            });
             console.log('Network saved');
           } catch (error) {
             console.log(error);
@@ -189,10 +188,10 @@ export default function App() {
         android_ripple={{ color: '#fff' }}
         onPress={async () => {
           try {
-            await TetheringManager.connectToNetwork(
-              'Assem’s iPhone',
-              'a123456789'
-            );
+            await TetheringManager.connectToNetwork({
+              ssid: 'Assem’s iPhone',
+              password: 'a123456789'
+            });
             console.log('connected to network');
           } catch (error) {
             console.log(error);
@@ -221,12 +220,71 @@ export default function App() {
           try {
             const wifiNetworks = await TetheringManager.getWifiNetworks(true);
             setNetworks(wifiNetworks);
-          } catch (error) {
-            console.log(error);
+          } catch (error: any) {
+            if (error instanceof TetheringError) {
+              console.log(error.code);
+            }
           }
         }}
       >
         <Text>Get list of networks</Text>
+      </Pressable>
+      <Pressable
+        style={styles.button}
+        android_ripple={{ color: '#fff' }}
+        onPress={async () => {
+          try {
+            const suggestionNum = await TetheringManager.getMaxNumberOfNetworkSuggestions();
+            console.log(suggestionNum);
+          } catch (error: any) {
+            if (error instanceof TetheringError) {
+              console.log(error.code);
+            }
+          }
+        }}
+      >
+        <Text>Get max suggestions</Text>
+      </Pressable>
+      <Pressable
+        style={styles.button}
+        android_ripple={{ color: '#fff' }}
+        onPress={async () => {
+          try {
+            const ip = await TetheringManager.getDeviceIP();
+            console.log(ip);
+          } catch (error: any) {
+            if (error instanceof TetheringError) {
+              console.log(error.code);
+            }
+          }
+        }}
+      >
+        <Text>Get device ip</Text>
+      </Pressable>
+      <Pressable
+        style={styles.button}
+        android_ripple={{ color: '#fff' }}
+        onPress={async () => {
+          try {
+            const status = await TetheringManager.isDeviceAlreadyConnected();
+            console.log(status);
+          } catch (error: any) {
+            if (error instanceof TetheringError) {
+              console.log(error.code);
+            }
+          }
+        }}
+      >
+        <Text>is connected to network?</Text>
+      </Pressable>
+      <Pressable
+        style={styles.button}
+        android_ripple={{ color: '#fff' }}
+        onPress={() => {
+          TetheringManager.openWifiSettings(false)
+        }}
+      >
+        <Text>Open wifi settings</Text>
       </Pressable>
       <Pressable
         style={styles.button}

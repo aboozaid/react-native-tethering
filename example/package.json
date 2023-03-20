@@ -11,8 +11,7 @@
   "dependencies": {
     "@react-native-community/netinfo": "^9.3.7",
     "react": "18.2.0",
-    "react-native": "0.71.3",
-    "react-native-wifi-reborn": "^4.7.0"
+    "react-native": "0.71.3"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@react-native-tethering/wifi": ["./packages/wifi/src/index"]
+      "react-native-tethering": ["./src/index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
