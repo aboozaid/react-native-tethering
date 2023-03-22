@@ -3,9 +3,11 @@
   align-items: center;
   padding: 2rem 0;
   width: 100%;
+  background-color: #242526;
+  color: var(--ifm-font-color-base-inverse);
 }
 
 .featureSvg {
-  height: 200px;
-  width: 200px;
+  height: 60px;
+  width: 60px;
 }

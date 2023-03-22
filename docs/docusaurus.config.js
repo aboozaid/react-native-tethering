@@ -6,8 +6,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
+  title: 'React Native Tethering',
+  tagline: 'The ultimate WiFi and hotspot toolkit for React Native & Expo',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -73,7 +73,7 @@ const config = {
           {
             type: 'doc',
             docId: 'intro',
-            position: 'right',
+            position: 'left',
             label: 'Docs',
           },
           // {to: '/blog', label: 'Blog', position: 'right'},

@@ -1,0 +1,52 @@
+---
+sidebar_position: 1
+---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Getting Started
+**Tethering WiFi** is an Android module for your react-native and expo app which provides WiFi functionalities such as scanning, connecting and more. It built on top of the latest/official Android WiFi classes.
+
+:::info
+
+Currently Android 10 and above are supported please if you need to support old versions as well you
+can participate in this issue and share your thoughts [`Old versions support?`](#)
+
+:::
+
+## Installation
+
+<Tabs>
+  <TabItem value="npm" label="NPM" default>
+
+    npm install @react-native-tethering/wifi
+
+  </TabItem>
+  <TabItem value="yarn" label="Yarn">
+
+    yarn add @react-native-tethering/wifi
+
+  </TabItem>
+</Tabs>
+
+## Minimum requirements
+- `react-native` >= 0.63.0
+- `expo` >= 41 (if you use [Expo](https://expo.io))
+- `typescript` >= 4.1.0 (if you use [TypeScript](https://www.typescriptlang.org))
+
+## Needed Permissions
+```
+  <!-- For wifi to check state and change it -->
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+  <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+  <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+
+  <!-- For wifi scanning and network details -->
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+```
+
+## Use Expo
+
+## Run the App
+React-Native or Expo will link the module automatically during building after that you should see your app running in your Emulator/Device which means you're ready to go 🚀.

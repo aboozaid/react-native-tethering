@@ -2,17 +2,30 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# Intro
 
-Let's discover **Docusaurus in less than 5 minutes**.
+Most of network modules in react-native are outdated and use old deprecated APIs which are no longer
+work in android new versions due to breaking changes. **Tethering** aimed to provide UP-TO-DATE functions to work with WiFi or Hotspot of your device.
 
 ## Getting Started
 
-Get started by **creating a new site**.
+Tethering consists of two modules both are fully typed and written in Typescript.
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+- [Install WiFi module](/docs)
+- [Install Hotspot module](/docs)
 
-### What you'll need
+| Module | Version |
+| ------- | :-----: |
+| @react-native-tethering/wifi | 1.0.0 |
+| @react-native-tethering/hotspot | 1.0.0 |
+
+:::info
+
+Currently Android is only supported if you need an IOS version please feel free to contribute.
+
+:::
+
+<!-- ### What you'll need
 
 - [Node.js](https://nodejs.org/en/download/) version 16.14 or above:
   - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
@@ -44,4 +57,4 @@ The `cd` command changes the directory you're working with. In order to work wit
 
 The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
 
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes. -->
