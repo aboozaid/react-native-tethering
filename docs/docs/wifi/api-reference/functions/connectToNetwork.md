@@ -3,7 +3,7 @@ sidebar_position: 4
 ---
 
 # connectToNetwork
-Connect to a network with internet connectivity and return a promise of success otherwise `TetheringError` will be thrown with the error details.
+Connect to a network with internet connectivity and return a promise of success otherwise [`TetheringError`](/docs/wifi/api-reference/objects#tetheringerror) will be thrown with the error details.
 
 :::info
 

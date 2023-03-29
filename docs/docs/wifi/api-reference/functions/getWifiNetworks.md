@@ -3,7 +3,7 @@ sidebar_position: 7
 ---
 
 # getWifiNetworks
-Get list of nearby networks and return a promise of [`Network`](#) array otherwise `TetheringError` will be thrown with the error details.
+Get list of nearby networks and return a promise of [`Network`](/docs/wifi/api-reference/objects#network) array otherwise [`TetheringError`](/docs/wifi/api-reference/objects#tetheringerror) will be thrown with the error details.
 
 :::caution
 

@@ -5,25 +5,20 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # Getting Started
-**Tethering WiFi** is an Android module for your react-native and expo app which provides WiFi functionalities such as scanning, connecting and more. It built on top of the latest/official Android WiFi classes.
+**Tethering Hotspot** is an Android module for your react-native and expo app which provides Hotspot functionalities such as scanning, change states and more. It built on top of the latest/official Android Connectivity classes.
 
-:::info
-
-Currently Android 10 and above are supported.
-
-:::
 
 ## Installation
 
 <Tabs>
   <TabItem value="npm" label="NPM" default>
 
-    npm install @react-native-tethering/wifi
+    npm install @react-native-tethering/hotspot
 
   </TabItem>
   <TabItem value="yarn" label="Yarn">
 
-    yarn add @react-native-tethering/wifi
+    yarn add @react-native-tethering/hotspot
 
   </TabItem>
 </Tabs>
@@ -35,15 +30,20 @@ Currently Android 10 and above are supported.
 
 ## Needed Permissions
 ```
-  <!-- For wifi to check state and change it -->
-  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-  <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-  <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-
   <!-- For wifi scanning and network details -->
   <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
   <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+  <uses-permission android:name="android.permission.WRITE_SETTINGS"
+    tools:ignore="ProtectedPermissions" />
 ```
+:::info
+  if you target android 13 and above you will need to include that permission as well
+  
+  ```
+    <uses-permission android:name="android.permission.NEARBY_WIFI_DEVICES" />
+  ```
+:::
 
 ## Use Expo
 TODO

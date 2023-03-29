@@ -3,7 +3,7 @@ sidebar_position: 4
 ---
 
 # saveNetworkInDevice
-Add a network to saved networks of a device then connect to it and return a promise of success otherwise `TetheringError` will be thrown with the error details.
+Add a network to saved networks of a device then connect to it and return a promise of success otherwise [`TetheringError`](/docs/wifi/api-reference/objects#tetheringerror) will be thrown with the error details.
 
 :::info
 

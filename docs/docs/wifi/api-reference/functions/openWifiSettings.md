@@ -7,7 +7,7 @@ Open WiFi settings screen.
 
 :::info
 
-in case you unable to connect to a network using [`connectToNetwork`](#) function it will always listed in the popup dialog so user can just click on without having to re-type any credentials.
+in case of unable connecting to a network using [`connectToNetwork`](/docs/wifi/api-reference/functions/connectToNetwork) that network will always listed in the popup dialog so user can just click on it without having to re-type any credentials.
 
 :::
 

@@ -3,7 +3,7 @@ sidebar_position: 6
 ---
 
 # disconnectFromNetwork
-Disconnect from a connected network and return a promise of success otherwise `TetheringError` will be thrown with the error details.
+Disconnect from a connected network and return a promise of success otherwise [`TetheringError`](/docs/wifi/api-reference/objects#tetheringerror) will be thrown with the error details.
 
 :::info
 

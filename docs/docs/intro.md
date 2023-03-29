@@ -11,8 +11,8 @@ work in android new versions due to breaking changes. **Tethering** aimed to pro
 
 Tethering consists of two modules both are fully typed and written in Typescript.
 
-- [Install WiFi module](/docs)
-- [Install Hotspot module](/docs)
+- [Install WiFi module](/docs/wifi/getting-started)
+- [Install Hotspot module](/docs/hotspot/getting-started)
 
 | Module | Version |
 | ------- | :-----: |

@@ -27,7 +27,7 @@ function HomepageHeader() {
           </Link>
           <Link
             className="button button--secondary button--lg"
-            to="/docs/intro">
+            to="https://github.com/aboozaid/react-native-tethering/tree/redesign/example">
             Try it
           </Link>
         </div>

@@ -3,7 +3,7 @@ sidebar_position: 4
 ---
 
 # connectToLocalNetwork
-Connect to a network without internet connectivity such as your printer, IoT device or p2p with another device and return a promise of success otherwise `TetheringError` will be thrown with the error details.
+Connect to a network without internet connectivity such as your printer, IoT device or p2p with another device and return a promise of success otherwise [`TetheringError`](/docs/wifi/api-reference/objects#tetheringerror) will be thrown with the error details.
 
 :::info
 

@@ -3,7 +3,7 @@ sidebar_position: 2
 ---
 
 # setWifiEnabled
-Turn on your device WiFi and return a promise of success otherwise `TetheringError` will be thrown with the error details.
+Turn on your device WiFi and return a promise of success otherwise [`TetheringError`](/docs/wifi/api-reference/objects#tetheringerror) will be thrown with the error details.
 
 :::info
 
@@ -23,6 +23,6 @@ You must have `CHANGE_WIFI_STATE` permission granted to your App
 | ------- | :-----: | :-----: | :-----: |
 | autoScan | Boolean | Start scanning nearby networks once WiFi get enabled | false |
 
-- if you set `autoScan` to true, you can get networks list by listening to `onWifiScanResults` event.
+- if you set `autoScan` to true, you can get networks list by listening to [`onWifiScanResults`](/docs/wifi/api-reference/events#onwifiscanresults) event.
 
 
