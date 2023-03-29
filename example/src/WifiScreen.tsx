@@ -32,7 +32,7 @@ export default function WifiScreen({ back }: WifiScreenProps) {
       </Pressable>
       <View style={styles.wrapper}>
         <Text style={styles.wrapperHeader}>WiFi States</Text>
-        <View style={styles.row}>
+        <View style={{ width: '100%' }}>
           <Pressable
             style={styles.button}
             android_ripple={{ color: '#ccc' }}
@@ -113,8 +113,8 @@ export default function WifiScreen({ back }: WifiScreenProps) {
             onPress={async () => {
               try {
                 await TetheringManager.connectToLocalNetwork({
-                  ssid: 'network name',
-                  password: 'network password',
+                  ssid: 'Robix',
+                  password: 'robixrobix@gotsha1986',
                   isHidden: true
                 });
                 ToastAndroid.show('WiFi Connected', ToastAndroid.SHORT)

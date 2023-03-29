@@ -1,7 +1,7 @@
 {
   "name": "@react-native-tethering/wifi",
   "version": "0.1.0",
-  "description": "Tethering WiFi module enables seamless connectivity, scanning, and network management and supports both React-Native & Expo.",
+  "description": "Tethering WiFi is an Android module for your react-native and expo app which provides WiFi functionalities such as scanning, connecting and more. It built on top of the latest/official Android WiFi classes.",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
   "types": "lib/typescript/index.d.ts",

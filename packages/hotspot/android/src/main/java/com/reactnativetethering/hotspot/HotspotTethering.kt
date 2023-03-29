@@ -97,7 +97,7 @@ class HotspotTethering(private val context: ReactApplicationContext) {
     promise.resolve(devices)
   }
 
-  fun getMyIPAddress(promise: Promise) = if (isHotspotRunning()) promise.resolve(null) else promise.resolve(getHotspotIpAddress())
+  fun getMyIPAddress(promise: Promise) = if (!isHotspotRunning()) promise.resolve(null) else promise.resolve(getHotspotIpAddress())
 
   @RequiresApi(Build.VERSION_CODES.P)
   private fun enableHotspotInRAndAbove(promise: Promise) {
