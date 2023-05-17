@@ -1,6 +1,7 @@
 {
   "name": "@react-native-tethering/hotspot",
   "version": "1.0.0",
+  "private":"false",
   "description": "Tethering Hotspot is an Android module for your react-native and expo app which provides Hotspot functionalities such as scanning, change states and more. It built on top of the latest/official Android Connectivity classes.",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -75,9 +76,6 @@
   },
   "resolutions": {
     "@types/react": "17.0.21"
-  },
-  "dependencies": {
-    "tsconfig": "*"
   },
   "peerDependencies": {
     "react": "*",
@@ -160,5 +158,5 @@
       ]
     ]
   },
-  "gitHead": "fe94ba3ebe368ec6801df83e69802356272b836b"
+  "gitHead": "0ffa6526c599f826866744184e92f5a34d917b8f"
 }
