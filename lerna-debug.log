@@ -1,0 +1,11 @@
+41 error Error: Command failed with exit code 1: git commit -m v1.0.0
+41 error Lefthook v1.3.7
+41 error RUNNING HOOK: pre-commit
+41 error On branch develop
+41 error Your branch is up to date with 'origin/develop'.
+41 error
+41 error nothing to commit, working tree clean
+41 error     at makeError (/Volumes/Hackintosh/work/secondary/opensource/react-native-tethering/node_modules/execa/lib/error.js:60:11)
+41 error     at handlePromise (/Volumes/Hackintosh/work/secondary/opensource/react-native-tethering/node_modules/execa/index.js:118:26)
+41 error     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+41 error     at async Promise.all (index 0)
