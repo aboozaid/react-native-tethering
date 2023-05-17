@@ -76,6 +76,9 @@
   "resolutions": {
     "@types/react": "17.0.21"
   },
+  "dependencies": {
+    "tsconfig": "*"
+  },
   "peerDependencies": {
     "react": "*",
     "react-native": "*"
@@ -152,9 +155,10 @@
       [
         "typescript",
         {
-          "project": "tsconfig.build.json"
+          "project": "tsconfig.json"
         }
       ]
     ]
-  }
+  },
+  "gitHead": "fe94ba3ebe368ec6801df83e69802356272b836b"
 }
