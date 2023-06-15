@@ -489,13 +489,17 @@ class WifiTethering(private val context: ReactApplicationContext) {
   }
 
   fun disconnectFromLocalNetwork(promise: Promise) {
-    if (isAndroidTenOrLater()) {
-      connectivityManager.bindProcessToNetwork(null)
-      connectivityManager.unregisterNetworkCallback(connectivityNetworkListener)
-      promise.resolve(null)
-    } else {
-      CustomPromise(promise).reject(UnsupportedApiException())
-    }
+		try {
+			if (isAndroidTenOrLater()) {
+				connectivityManager.bindProcessToNetwork(null)
+				connectivityManager.unregisterNetworkCallback(connectivityNetworkListener)
+				promise.resolve(null)
+			} else {
+				CustomPromise(promise).reject(UnsupportedApiException())
+			}
+		} catch (e: Exception) {
+			CustomPromise(promise).reject(CodedException(e))
+		}
   }
 
   fun disconnectFromNetwork(promise: Promise) {
